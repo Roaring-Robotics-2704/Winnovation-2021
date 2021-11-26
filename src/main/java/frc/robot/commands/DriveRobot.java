@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.Constants;
 
 public class DriveRobot extends CommandBase {
   /** Creates a new DriveRobot. */
@@ -13,6 +14,20 @@ public class DriveRobot extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_driveTrain);
   }
+  
+  private double processInput(double joystickValue) {
+    //TODO: implement deadband/deadzone
+    if (-Constants.c_deadBand <= joystickValue && joystickValue <= Constants.c_deadBand){
+        return 0;
+    }
+    //TODO: implement joystick scaling
+    if (joystickValue <= 0){
+        return - Math.pow(joystickValue, Constants.c_inputScaling);
+    }
+    else{
+        return Math.pow(joystickValue, Constants.c_inputScaling);
+    }
+}
 
   // Called when the command is initially scheduled.
   @Override
@@ -21,11 +36,15 @@ public class DriveRobot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double moveSpeed = RobotContainer.m_stick.getY();
-    double turnSpeed = RobotContainer.m_stick.getZ();
+    double forwardInput = RobotContainer.m_stick.getY();
+    double turnInput = RobotContainer.m_stick.getZ();
+    double processedInput = processInput(forwardInput);
+
+    //double moveSpeed = RobotContainer.m_stick.getY();
+    //double turnSpeed = RobotContainer.m_stick.getZ();
     //double moveSpeed = RobotContainer.m_controller.getY();
     //double turnSpeed = RobotContainer.m_controller.getZ();
-    RobotContainer.m_driveTrain.arcadeDrive(moveSpeed, turnSpeed);
+    RobotContainer.m_driveTrain.arcadeDrive(processedInput, (turnInput*processedInput));
   }
 
   // Called once the command ends or is interrupted.
