@@ -33,8 +33,8 @@ public class RobotContainer {
   //OI Objects and Hardware
   //public static Joystick m_stick = new Joystick(Constants.c_joystick);
   public static XboxController m_xbox = new XboxController(Constants.c_xbox);
-  //public static JoystickButton m_armUpButton = new JoystickButton(m_stick, 1);
-  //public static JoystickButton m_armDownButton = new JoystickButton(m_stick, 2);
+  //public static XboxController.Button m_armUpButton = new JoystickButton(m_stick, 1);
+  //public static XboxController.Button m_armDownButton = new JoystickButton(m_stick, 2);
   //public static XboxController m_controller = new XboxController(Constants.c_joystick);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */

@@ -18,7 +18,8 @@ public final class Constants {
     public static int c_xbox = 0;
     public static int c_rightMotor = 1;
     public static int c_leftMotor = 2;
-    public static double c_deadBand = 0.05;
+    public static double c_deadBand = 0.00;
     public static double c_inputScaling = 2;
     public static double c_armSpeed = 0.1;
+    public static double c_trigger = 2;
 }
