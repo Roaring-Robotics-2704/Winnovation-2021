@@ -8,14 +8,13 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.DriveRobot;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 
 /**
@@ -28,12 +27,15 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public static DriveTrain m_driveTrain = new DriveTrain();
+  public static Arm m_arm = new Arm();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   public static DriveRobot m_driveRobot = new DriveRobot();
 
   //OI Objects and Hardware
   public static Joystick m_stick = new Joystick(Constants.c_joystick);
+  public static JoystickButton m_armUpButton = new JoystickButton(m_stick, 1);
+  public static JoystickButton m_armDownButton = new JoystickButton(m_stick, 2);
   //public static XboxController m_controller = new XboxController(Constants.c_joystick);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -49,7 +51,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    m_armUpButton.whileHeld(new ArmDown());
+    m_armDownButton.whileHeld(new ArmDown());
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
