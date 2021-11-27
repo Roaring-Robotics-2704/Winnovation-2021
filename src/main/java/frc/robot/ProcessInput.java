@@ -10,6 +10,8 @@ public class ProcessInput {
     }
 
     public double process(double joystickValue) {
+        this.c_Deadband = prefs.getDouble("stick_deadband", 0.05);
+        this.c_InputScaling = prefs.getDouble("stick_scaling", 2);
         // deadband
         if (-c_Deadband <= joystickValue && joystickValue <= c_Deadband){
             return 0;
