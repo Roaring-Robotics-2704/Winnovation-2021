@@ -16,11 +16,11 @@ public class DriveRobot extends CommandBase {
   }
   
   private double processInput(double joystickValue) {
-    //TODO: implement deadband/deadzone
+    // deadband
     if (-Constants.c_deadBand <= joystickValue && joystickValue <= Constants.c_deadBand){
         return 0;
     }
-    //TODO: implement joystick scaling
+    // scaling
     if (joystickValue <= 0){
         return - Math.pow(joystickValue, Constants.c_inputScaling);
     }
