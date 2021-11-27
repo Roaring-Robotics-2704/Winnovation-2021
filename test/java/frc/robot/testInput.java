@@ -56,7 +56,7 @@ public class testInput {
         // assertTrue(smallest_negative > -test_precision);
     }
 
-    @Test
+    /*@Test
     public void test2(){//makes sure scaling is different close to 
         double closeDifference = Math.abs(input_processor.process(deadzone_size+0.1) - input_processor.process(deadzone_size+0.2));
         double farDifference = Math.abs(input_processor.process(input_processor.process(1) - input_processor.process(0.9))); 
@@ -65,5 +65,5 @@ public class testInput {
         closeDifference = Math.abs(input_processor.process(-deadzone_size-0.1) - input_processor.process(-deadzone_size-0.2));
         farDifference = Math.abs(input_processor.process(input_processor.process(-1) - input_processor.process(-0.9))); 
         assertTrue(closeDifference < farDifference);
-    }
+    }*/
 }

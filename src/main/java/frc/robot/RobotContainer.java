@@ -4,15 +4,15 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
 
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+//import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 
 /**
@@ -31,9 +31,10 @@ public class RobotContainer {
   public static DriveRobot m_driveRobot = new DriveRobot();
 
   //OI Objects and Hardware
-  public static Joystick m_stick = new Joystick(Constants.c_joystick);
-  public static JoystickButton m_armUpButton = new JoystickButton(m_stick, 1);
-  public static JoystickButton m_armDownButton = new JoystickButton(m_stick, 2);
+  //public static Joystick m_stick = new Joystick(Constants.c_joystick);
+  public static XboxController m_xbox = new XboxController(Constants.c_xbox);
+  //public static JoystickButton m_armUpButton = new JoystickButton(m_stick, 1);
+  //public static JoystickButton m_armDownButton = new JoystickButton(m_stick, 2);
   //public static XboxController m_controller = new XboxController(Constants.c_joystick);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -50,8 +51,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    m_armUpButton.whileHeld(new ArmDown());
-    m_armDownButton.whileHeld(new ArmDown());
+   // m_armUpButton.whileHeld(new ArmDown());
+    //m_armDownButton.whileHeld(new ArmDown());
   }
 
   /**
