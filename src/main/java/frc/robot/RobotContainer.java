@@ -4,12 +4,15 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
-
-import frc.robot.commands.*;
-import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.DriveRobot;
+import frc.robot.commands.ExampleCommand;
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.ExampleSubsystem;
 
 //import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -33,8 +36,8 @@ public class RobotContainer {
   //OI Objects and Hardware
   //public static Joystick m_stick = new Joystick(Constants.c_joystick);
   public static XboxController m_xbox = new XboxController(Constants.c_xbox);
-  //public static XboxController.Button m_armUpButton = new JoystickButton(m_stick, 1);
-  //public static XboxController.Button m_armDownButton = new JoystickButton(m_stick, 2);
+  //public static JoystickButton m_armUpButton = new JoystickButton(m_xbox, Constants.c_leftTrigger);
+  //public static JoystickButton m_armDownButton = new JoystickButton(m_xbox, Constants.c_rightTrigger);
   //public static XboxController m_controller = new XboxController(Constants.c_joystick);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
