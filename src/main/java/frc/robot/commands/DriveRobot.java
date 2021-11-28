@@ -36,14 +36,9 @@ public class DriveRobot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double leftInput = RobotContainer.m_xbox.getRawAxis(1);
-    double rightInput = RobotContainer.m_xbox.getRawAxis(4);
-    //double processedInput = processInput(forwardInput);
+    double leftInput = RobotContainer.m_xbox.getRawAxis(Constants.c_right_y);
+    double rightInput = RobotContainer.m_xbox.getRawAxis(Constants.c_right_x);
 
-    //double moveSpeed = RobotContainer.m_stick.getY();
-    //double turnSpeed = RobotContainer.m_stick.getZ();
-    //double moveSpeed = RobotContainer.m_controller.getY();
-    //double turnSpeed = RobotContainer.m_controller.getZ();
     RobotContainer.m_driveTrain.tankDrive(leftInput, rightInput);
   }
 

@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Arm extends SubsystemBase {
-  private WPI_TalonSRX armMotor = new WPI_TalonSRX(3);
+  private WPI_TalonSRX armMotor = new WPI_TalonSRX(Constants.c_armMotor);
   /** Creates a new ExampleSubsystem. */
   public Arm() {
   }
