@@ -21,6 +21,7 @@ public final class Constants {
     public static double c_deadBand = 0.00;
     public static double c_inputScaling = 2;
     public static double c_armSpeed = 0.1;
+    public static int c_armMotor = 2;
     public static int c_leftTrigger = 2;
     public static int c_rightTrigger = 3;
 }

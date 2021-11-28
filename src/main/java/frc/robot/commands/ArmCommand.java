@@ -22,12 +22,12 @@ public class ArmCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double leftInput = RobotContainer.m_xbox.getRawAxis(Constants.c_left_trigger);
-    double rightInput = RobotContainer.m_xbox.getRawAxis(Constants.c_right_trigger);
+   // double leftInput = RobotContainer.m_xbox.getRawAxis(Constants.c_left_trigger);
+    //double rightInput = RobotContainer.m_xbox.getRawAxis(Constants.c_right_trigger);
 
-    double sumInput = -leftInput + rightInput;
+    //double sumInput = -leftInput + rightInput;
     
-    RobotContainer.m_arm.move(sumInput);
+   // RobotContainer.m_arm.move(sumInput);
   }
 
   // Called once the command ends or is interrupted.
