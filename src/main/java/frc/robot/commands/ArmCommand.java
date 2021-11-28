@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants;
 
-public class ArmUp extends CommandBase {
-  /** Creates a new DriveRobot. */
-  public ArmUp() {
+public class ArmCommand extends CommandBase {
+  /** Creates a new ArmCommand. */
+  public ArmCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_arm);
   }
@@ -22,7 +22,12 @@ public class ArmUp extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.m_arm.move(Constants.c_armSpeed);
+   // double leftInput = RobotContainer.m_xbox.getRawAxis(Constants.c_left_trigger);
+    //double rightInput = RobotContainer.m_xbox.getRawAxis(Constants.c_right_trigger);
+
+    //double sumInput = -leftInput + rightInput;
+    
+   // RobotContainer.m_arm.move(sumInput);
   }
 
   // Called once the command ends or is interrupted.

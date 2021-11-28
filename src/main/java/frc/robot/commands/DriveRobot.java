@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
 import frc.robot.Constants;
 
@@ -36,8 +37,11 @@ public class DriveRobot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double rightInput = RobotContainer.m_xbox.getRawAxis(1);
-    double leftInput = RobotContainer.m_xbox.getRawAxis(3);
+    double leftInput = processInput(RobotContainer.m_xbox.getRawAxis(5));
+    double rightInput = processInput(RobotContainer.m_xbox.getRawAxis(1));
+
+    SmartDashboard.putNumber("Left Input", leftInput);
+    SmartDashboard.putNumber("Right Input", rightInput);
     //double processedInput = processInput(forwardInput);
 
     //double moveSpeed = RobotContainer.m_stick.getY();
