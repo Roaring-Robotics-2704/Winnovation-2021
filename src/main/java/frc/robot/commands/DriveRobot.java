@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
 import frc.robot.Constants;
 
@@ -36,15 +37,18 @@ public class DriveRobot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double forwardInput = RobotContainer.m_stick.getY();
-    double turnInput = RobotContainer.m_stick.getZ();
-    double processedInput = processInput(forwardInput);
+    double leftInput = processInput(RobotContainer.m_xbox.getRawAxis(5));
+    double rightInput = processInput(RobotContainer.m_xbox.getRawAxis(1));
+
+    SmartDashboard.putNumber("Left Input", leftInput);
+    SmartDashboard.putNumber("Right Input", rightInput);
+    //double processedInput = processInput(forwardInput);
 
     //double moveSpeed = RobotContainer.m_stick.getY();
     //double turnSpeed = RobotContainer.m_stick.getZ();
     //double moveSpeed = RobotContainer.m_controller.getY();
     //double turnSpeed = RobotContainer.m_controller.getZ();
-    RobotContainer.m_driveTrain.arcadeDrive(processedInput, (turnInput*processedInput));
+    RobotContainer.m_driveTrain.tankDrive(leftInput, rightInput);
   }
 
   // Called once the command ends or is interrupted.
