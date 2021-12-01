@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.*;
+//import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -46,16 +46,8 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     //SmartDashboard.putNumber("Axis 0", RobotContainer.m_xbox.getRawAxis(0));
-    SmartDashboard.putNumber("Right Motor", RobotContainer.m_xbox.getRawAxis(1));
-    SmartDashboard.putNumber("Axis 2", RobotContainer.m_xbox.getRawAxis(2));
-    SmartDashboard.putNumber("Axis 3", RobotContainer.m_xbox.getRawAxis(3));
-    SmartDashboard.putNumber("Axis 4", RobotContainer.m_xbox.getRawAxis(4));
-    SmartDashboard.putNumber("Left Motor", RobotContainer.m_xbox.getRawAxis(5));
-    SmartDashboard.putNumber("Axis 6", RobotContainer.m_xbox.getRawAxis(6));
-    SmartDashboard.putBoolean("Left Trigger Pressed", RobotContainer.m_xbox.getRawButtonPressed(2));
-    SmartDashboard.putBoolean("Left Trigger Released", RobotContainer.m_xbox.getRawButtonReleased(2));
-    SmartDashboard.putBoolean("Right Trigger Pressed", RobotContainer.m_xbox.getRawButtonPressed(3));
-    SmartDashboard.putBoolean("Right Trigger Released", RobotContainer.m_xbox.getRawButtonReleased(3));
+
+
     CommandScheduler.getInstance().run();
   }
 
@@ -69,7 +61,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+   // m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {

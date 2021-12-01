@@ -37,8 +37,8 @@ public class DriveRobot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double leftInput = processInput(RobotContainer.m_xbox.getRawAxis(5));
-    double rightInput = processInput(RobotContainer.m_xbox.getRawAxis(1));
+    double leftInput = processInput(RobotContainer.m_xbox.getRawAxis(Constants.c_leftJoystickAxis));
+    double rightInput = processInput(RobotContainer.m_xbox.getRawAxis(Constants.c_rightJoystickAxis));
 
     SmartDashboard.putNumber("Left Input", leftInput);
     SmartDashboard.putNumber("Right Input", rightInput);

@@ -5,13 +5,15 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DriveTrain extends SubsystemBase {
   /** Creates a new DriveTrain. */
-  private WPI_VictorSPX m_leftMotor = new WPI_VictorSPX(1);
-  private WPI_VictorSPX m_rightMotor = new WPI_VictorSPX(2);
+  private WPI_VictorSPX m_leftMotor = new WPI_VictorSPX(Constants.c_leftMotor);
+  private WPI_VictorSPX m_rightMotor = new WPI_VictorSPX(Constants.c_rightMotor);
   private DifferentialDrive drive = new DifferentialDrive(m_leftMotor, m_rightMotor);
   public DriveTrain() {
   }

@@ -3,14 +3,15 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems;
-
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.Encoder;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class Arm extends SubsystemBase {
-  private WPI_TalonSRX armMotor = new WPI_TalonSRX(Constants.c_armMotor);
+  private WPI_VictorSPX armMotor = new WPI_VictorSPX(Constants.c_armMotor);
+  public static Encoder armEncoder = new Encoder(Constants.c_armEncoderPorts[0], Constants.c_armEncoderPorts[1]);
   /** Creates a new ExampleSubsystem. */
   public Arm() {
   }

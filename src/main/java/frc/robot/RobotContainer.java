@@ -6,13 +6,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.Command;
+//mport edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.ArmCommand;
 import frc.robot.commands.DriveRobot;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.ExampleSubsystem;
 
 //import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -26,19 +25,17 @@ import frc.robot.subsystems.ExampleSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public static DriveTrain m_driveTrain = new DriveTrain();
   public static Arm m_arm = new Arm();
 
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   public static DriveRobot m_driveRobot = new DriveRobot();
-  //public static ArmCommand m_armCommand = new ArmCommand();
+  public static ArmCommand m_armCommand = new ArmCommand();
 
   //OI Objects and Hardware
   //public static Joystick m_stick = new Joystick(Constants.c_joystick);
   public static XboxController m_xbox = new XboxController(Constants.c_xbox);
-  //public static JoystickButton m_armUpButton = new JoystickButton(m_xbox, Constants.c_leftTrigger);
-  //public static JoystickButton m_armDownButton = new JoystickButton(m_xbox, Constants.c_rightTrigger);
+  public static JoystickButton m_armUpButton = new JoystickButton(m_xbox, Constants.c_leftTriggerAxis);
+  public static JoystickButton m_armDownButton = new JoystickButton(m_xbox, Constants.c_rightTriggerAxis);
   //public static XboxController m_controller = new XboxController(Constants.c_joystick);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -46,7 +43,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     m_driveTrain.setDefaultCommand(m_driveRobot);
-    //m_arm.setDefaultCommand(m_armCommand)
+    m_arm.setDefaultCommand(m_armCommand);
   }
 
   /**
@@ -65,8 +62,8 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
+  //public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
-  }
+//  return m_autoCommand;
+ // }
 }
