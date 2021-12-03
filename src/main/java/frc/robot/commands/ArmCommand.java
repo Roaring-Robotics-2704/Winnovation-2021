@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants;
+import frc.robot.Robot;
 
 public class ArmCommand extends CommandBase {
   /** Creates a new ArmCommand. */
@@ -25,9 +26,17 @@ public class ArmCommand extends CommandBase {
    // double leftInput = RobotContainer.m_xbox.getRawAxis(Constants.c_left_trigger);
     //double rightInput = RobotContainer.m_xbox.getRawAxis(Constants.c_right_trigger);
 
+<<<<<<< Updated upstream
     //double sumInput = -leftInput + rightInput;
     
    // RobotContainer.m_arm.move(sumInput);
+=======
+    SmartDashboard.putNumber("Arm Encoder Get Distance", Arm.armEncoder.getDistance());
+
+
+    RobotContainer.m_arm.move(sumInput);
+   // RobotContainer.m_arm.move(0.1);
+>>>>>>> Stashed changes
   }
 
   // Called once the command ends or is interrupted.
@@ -37,6 +46,8 @@ public class ArmCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return //!RobotContainer.m_armDownButton.get() || 
+      Math.abs(Arm.armEncoder.getDistance()) <=0 || Math.abs(Arm.armEncoder.getDistance()) >= 1000;
+   // return false;
   }
 }
