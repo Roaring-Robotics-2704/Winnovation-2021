@@ -29,9 +29,6 @@ public class ArmCommand extends CommandBase {
     double sumInput = -leftInput + rightInput;
 
     SmartDashboard.putNumber("Arm Encoder Get Distance", Arm.armEncoder.getDistance());
-    SmartDashboard.putNumber("Arm Encoder Get Raw", Arm.armEncoder.getRaw());
-    SmartDashboard.putNumber("Arm Encoder Get Rate", Arm.armEncoder.getRate());
-
 
     RobotContainer.m_arm.move(sumInput);
    // RobotContainer.m_arm.move(0.1);
@@ -44,6 +41,6 @@ public class ArmCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return Math.abs(Arm.armEncoder.getDistance()) >= 0 || Math.abs(Arm.armEncoder.getDistance()) <= 1000;
   }
 }
