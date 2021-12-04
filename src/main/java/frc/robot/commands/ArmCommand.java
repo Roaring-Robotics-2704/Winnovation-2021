@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Arm;
+//import jdk.vm.ci.meta.Constant;
 import frc.robot.Constants;
 
 public class ArmCommand extends CommandBase {
@@ -27,13 +28,18 @@ public class ArmCommand extends CommandBase {
     double leftInput = RobotContainer.m_xbox.getRawAxis(Constants.c_leftTriggerAxis);
     double rightInput = RobotContainer.m_xbox.getRawAxis(Constants.c_rightTriggerAxis);
     double sumInput = -leftInput + rightInput;
+    double armSpeed;
 
     SmartDashboard.putNumber("Arm Encoder Get Distance", Arm.armEncoder.getDistance());
-    SmartDashboard.putNumber("Arm Encoder Get Raw", Arm.armEncoder.getRaw());
-    SmartDashboard.putNumber("Arm Encoder Get Rate", Arm.armEncoder.getRate());
 
-
-    RobotContainer.m_arm.move(sumInput);
+    if ((Math.abs(Arm.armEncoder.getDistance()) > 0 && Math.abs(Arm.armEncoder.getDistance()) <= 20)
+      || (Math.abs(Arm.armEncoder.getDistance()) >= 100 && Math.abs(Arm.armEncoder.getDistance()) < 120)) {
+      armSpeed = (Constants.c_armSpeed/2) * sumInput;
+    } else {
+      armSpeed = Constants.c_armSpeed * sumInput;
+    }
+    RobotContainer.m_arm.move(armSpeed);
+    //RobotContainer.m_arm.move(sumInput);
    // RobotContainer.m_arm.move(0.1);
   }
 
@@ -44,6 +50,10 @@ public class ArmCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    //if (Math.abs(Arm.armEncoder.getDistance()) <= 0 || Math.abs(Arm.armEncoder.getDistance()) >= 120) {
+    //  return true;
+    //} else {
+      return false;
+    //}
   }
 }

@@ -19,13 +19,13 @@ public final class Constants {
     public static int c_rightMotor = 2;
     public static int c_leftMotor = 1;
     public static int c_armMotor = 3;
-    public static int c_leftJoystickAxis = 1;
-    public static int c_rightJoystickAxis = 5;
-    public static int c_leftTriggerAxis = 2;
-    public static int c_rightTriggerAxis = 3;
-    public static double c_deadBand = 0.00;
+    public static int c_leftJoystickAxis = 5;
+    public static int c_rightJoystickAxis = 1;
+    public static int c_leftTriggerAxis = 3;
+    public static int c_rightTriggerAxis = 2;
+    public static double c_deadBand = 0.02;
     public static double c_inputScaling = 2;
-    public static double c_armSpeed = 0.1;
+    public static double c_armSpeed = 1.5;
 
     public static int[] c_armEncoderPorts = {0,1};
 }

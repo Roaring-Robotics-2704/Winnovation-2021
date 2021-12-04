@@ -42,12 +42,7 @@ public class DriveRobot extends CommandBase {
 
     SmartDashboard.putNumber("Left Input", leftInput);
     SmartDashboard.putNumber("Right Input", rightInput);
-    //double processedInput = processInput(forwardInput);
 
-    //double moveSpeed = RobotContainer.m_stick.getY();
-    //double turnSpeed = RobotContainer.m_stick.getZ();
-    //double moveSpeed = RobotContainer.m_controller.getY();
-    //double turnSpeed = RobotContainer.m_controller.getZ();
     RobotContainer.m_driveTrain.tankDrive(leftInput, rightInput);
   }
 
