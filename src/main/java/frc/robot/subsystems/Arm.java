@@ -3,26 +3,64 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems;
-import frc.robot.Constants;
+import frc.robot.Constants.ArmConstants;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.Encoder;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import edu.wpi.first.wpilibj2.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.controller.ArmFeedforward;
+import edu.wpi.first.wpilibj.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Encoder;
 
-public class Arm extends SubsystemBase {
-  private WPI_VictorSPX armMotor = new WPI_VictorSPX(Constants.c_armMotor);
-  public static Encoder armEncoder = new Encoder(Constants.c_armEncoderPorts[0], Constants.c_armEncoderPorts[1]);
+
+
+public class Arm extends PIDSubsystem {
+  private WPI_VictorSPX armMotor = new WPI_VictorSPX(ArmConstants.kMotor);
+  public static Encoder armEncoder = new Encoder(ArmConstants.kEncoderPorts[0], ArmConstants.kEncoderPorts[1]);
+
+  private final ArmFeedforward armFeedForward =
+      new ArmFeedforward(ArmConstants.kStatic, ArmConstants.kGravity, ArmConstants.kVolts);
+
+  private double setpoint = ArmConstants.kMinAngle;
+
   /** Creates a new ExampleSubsystem. */
   public Arm() {
+      super(new PIDController(ArmConstants.kP, ArmConstants.kI, ArmConstants.kD));
+      getController().setTolerance(ArmConstants.kAngleTolerance);
+      armEncoder.setDistancePerPulse(ArmConstants.kEncoderDistancePerPulse);
+      setSetpoint(setpoint);
   }
 
   @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
+  public void useOutput(double output, double setpoint) {
+    armMotor.setVoltage(output + armFeedForward.calculate(setpoint, 0));
   }
 
-  public void move(double speed){
-    armMotor.set(speed);
+  @Override
+  public double getMeasurement() {
+    return armMotor.get();
+  }
+
+  public void adjust_position(double change) {
+    // Alpha filter
+    setpoint = ArmConstants.kAlpha * (setpoint + change) + setpoint * (1 - ArmConstants.kAlpha);
+
+    // Safety bounds
+    if (setpoint < ArmConstants.kMinAngle) {
+      setpoint = ArmConstants.kMinAngle;
+    }
+    else if (setpoint > ArmConstants.kMaxAngle) {
+      setpoint = ArmConstants.kMaxAngle;
+    }
+    SmartDashboard.putNumber("Arm Setpoint", setpoint);
+  }
+
+  public boolean atSetpoint() {
+    return false;
+  }
+
+  public void stopFeeder() {
+    armMotor.set(0);
   }
 
   @Override
