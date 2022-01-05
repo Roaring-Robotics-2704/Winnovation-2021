@@ -42,17 +42,16 @@ public class Arm extends PIDSubsystem {
   }
 
   public void adjust_position(double change) {
-    // Alpha filter
-    setpoint = ArmConstants.kAlpha * (setpoint + change) + setpoint * (1 - ArmConstants.kAlpha);
+    // TODO: Alpha filter -  use ArmConstants.kAlpha and (1 - ArmConstants.kAlpha)
 
-    // Safety bounds
-    if (setpoint < ArmConstants.kMinAngle) {
-      setpoint = ArmConstants.kMinAngle;
-    }
-    else if (setpoint > ArmConstants.kMaxAngle) {
-      setpoint = ArmConstants.kMaxAngle;
-    }
+    // TODO: Safety bounds
+    // Make sure we don't try to drive the arm past the boundaries. 
+    // Use rmConstants.kMinAngle and rmConstants.kMaxAngle
+
+
+    // TODO: update setpoint with the new 
     SmartDashboard.putNumber("Arm Setpoint", setpoint);
+
   }
 
   public boolean atSetpoint() {

@@ -53,8 +53,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-   // m_armUpButton.whileHeld(new ArmDown());
-    //m_armDownButton.whileHeld(new ArmDown());
+    // ARM - joystick
+
+    // DRIVE
+    // When right trigger is held, drive the robot straight using a gyro
+    // When left trigger is held, reduce the sensitivity of the controller by a third
   }
 
   /**

@@ -19,7 +19,7 @@ public class DriveTrain extends SubsystemBase {
   }
   public void tankDrive(double left, double right){
     //move y-axis, turn z-axis
-    drive.tankDrive(left,right);
+    drive.tankDrive(left, right);
   }
 
   @Override
